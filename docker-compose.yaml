@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  java-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: java-api:latest
+    container_name: java-api
+    ports:
+      - 81:8080 
+
+
+
