@@ -6,31 +6,32 @@ public class ApiReturnException extends Exception {
 
     private static final long serialVersionUID = 1L;
 
-    private int responseCode;
+    private int status;
 
-    private String msg;
+    private String message;
 
-    public ApiReturnException (HttpStatus responseCode, String msg) {
-		this.msg = msg;
-		this.responseCode = responseCode.value();
+    public ApiReturnException (HttpStatus status, String message) {
+		this.message = message;
+		this.status = status.value();
     }
 
-    public int getResponseCode() {
-        return responseCode;
+    public int getStatus() {
+        return status;
     }
 
-    public void setResponseCode(int responseCode) {
-        this.responseCode = responseCode;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
+  
     
     
 }

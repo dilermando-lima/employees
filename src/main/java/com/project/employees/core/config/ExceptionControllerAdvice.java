@@ -17,7 +17,7 @@ public class ExceptionControllerAdvice {
     @ExceptionHandler(ApiReturnException.class)
 	public ResponseEntity<ExceptionEntityReturn> exceptionHandlerApiReturnExcepetion(ApiReturnException ex) {
 		return new ResponseEntity<ExceptionEntityReturn>(
-				new ExceptionEntityReturn( ex.getResponseCode(), ex.getMsg() ), HttpStatus.valueOf(ex.getResponseCode()));
+				new ExceptionEntityReturn( ex.getStatus(), ex.getMessage() ), HttpStatus.valueOf(ex.getStatus()));
 	}
     
     
