@@ -2,6 +2,7 @@ package com.project.employees.controller;
 
 import java.util.List;
 
+import com.project.employees.annotations.AuthType;
 import com.project.employees.core.handle.ApiReturnException;
 import com.project.employees.entity.Employee;
 import com.project.employees.service.EmployeeService;
@@ -24,22 +25,25 @@ public class EmployeesController {
     @Autowired
     EmployeeService service;
 
-
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@GetMapping
 	public ResponseEntity<List<Employee>> list() throws ApiReturnException {
 		return new ResponseEntity<List<Employee>>(service.list(), HttpStatus.OK); 
 	}
 
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@GetMapping("/{id}")
 	public ResponseEntity<Employee>  detail( @PathVariable("id") Long id ) throws ApiReturnException {
 		return new ResponseEntity<Employee>(service.detail(id), HttpStatus.CREATED); 
 	}
 	
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@PostMapping
 	public ResponseEntity<Employee> create( @RequestBody  Employee employee ) throws ApiReturnException {
 		return new ResponseEntity<Employee>(service.create(employee), HttpStatus.OK);
 	}
 
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@PutMapping("/{id}")
 	public ResponseEntity<Employee> create( @RequestBody  Employee employee ,  @PathVariable("id") Long id ) throws ApiReturnException {
 		return new ResponseEntity<Employee>(service.update(employee, id), HttpStatus.OK);

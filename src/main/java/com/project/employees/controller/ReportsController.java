@@ -1,5 +1,6 @@
 package com.project.employees.controller;
 
+import com.project.employees.annotations.AuthType;
 import com.project.employees.core.handle.ApiReturnException;
 import com.project.employees.entity.ReportAge;
 import com.project.employees.entity.ReportSalary;
@@ -19,12 +20,13 @@ public class ReportsController {
     @Autowired
     ReportService service;
 
-
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@GetMapping("/employees/age")
 	public ResponseEntity<ReportAge> employeesAge() throws ApiReturnException {
 		return new ResponseEntity<ReportAge>(service.employeesAge(), HttpStatus.OK); 
 	}
 
+	@AuthType({AuthType.AUTH_SIMPLE})
 	@GetMapping("/employees/salary")
 	public ResponseEntity<ReportSalary> employeesSalary() throws ApiReturnException {
 		return new ResponseEntity<ReportSalary>(service.employeesSalary(), HttpStatus.OK); 
