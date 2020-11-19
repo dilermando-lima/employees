@@ -25,11 +25,11 @@ abstract class EmployeeValidate {
 
     }
 
-    protected void validateObjBeforeUpdate(Employee employee) throws ApiReturnException {
+    protected void validateObjBeforeUpdate(Employee employee,Long id) throws ApiReturnException {
 
         validateObjNull(employee);
 
-        validateIdNull(employee);
+        validateIdNull(id);
 
         validateName(employee);
 
@@ -47,11 +47,6 @@ abstract class EmployeeValidate {
         validateIdNull(id);
     }
 
-    private void validateIdNull(Employee employee) throws ApiReturnException {
-        if (employee.getId() == null)
-            throw new ApiReturnException(HttpStatus.NOT_FOUND, Err.ERR_1_11);
-
-    }
 
     private void validateIdNull(Long id) throws ApiReturnException {
         if (id == null)

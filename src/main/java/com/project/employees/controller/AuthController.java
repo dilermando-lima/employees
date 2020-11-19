@@ -18,7 +18,7 @@ public class AuthController {
     @Autowired
 	AuthService service;
 	
-    @GetMapping("key-access")
+    @GetMapping("/key-access")
 	public ResponseEntity<String> getKeyAccess() throws ApiReturnException {
 		return new ResponseEntity<String>(service.getKeyAccess(), HttpStatus.OK); 
     }

@@ -28,7 +28,7 @@ public class EmployeeService extends EmployeeValidate {
 
             validateObjIdNull(id);
 
-            Employee employee = repository.getOne(id);
+            Employee employee = repository.selectOneById(id);
             if(  employee == null ) throw new ApiReturnException(HttpStatus.NOT_FOUND, Err.ERR_1_11);
 
             return employee;
@@ -46,10 +46,12 @@ public class EmployeeService extends EmployeeValidate {
 
         public Employee update(Employee employee, Long id) throws ApiReturnException{
 
-            validateObjBeforeUpdate(employee);
+            validateObjBeforeUpdate(employee, id);
 
-            Employee employeeToUpdate = repository.getOne(id);
+            Employee employeeToUpdate = repository.selectOneById(id);
             if(  employeeToUpdate == null ) throw new ApiReturnException(HttpStatus.NOT_FOUND, Err.ERR_1_11);
+
+            employee.setId(id);
 
             employee = repository.save(employee);
 
@@ -60,11 +62,12 @@ public class EmployeeService extends EmployeeValidate {
 
             validateObjIdNull(id);
 
-            Employee employeeToDelete = repository.getOne(id);
+            Employee employeeToDelete = repository.selectOneById(id);
             if(  employeeToDelete == null ) throw new ApiReturnException(HttpStatus.NOT_FOUND, Err.ERR_1_11);
 
             Employee objCloneToReturn = UtilsMethods.cloneObject(employeeToDelete, Employee.class );
 
+            
             repository.delete(employeeToDelete);
 
             return objCloneToReturn;

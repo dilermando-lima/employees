@@ -23,6 +23,16 @@ public class Employee{
     @Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    public Employee(String name, String email, String department, String salary, LocalDate birthDate) {
+        this.name = name;
+        this.email = email;
+        this.department = department;
+        this.salary = salary;
+        this.birthDate = birthDate;
+    }
+
+    
     
     @Column(name = "name", nullable = false)
     private String name;
@@ -91,6 +101,14 @@ public class Employee{
     public void setSalary(String salary) {
         this.salary = salary;
     }
+
+    public Employee() {
+    }
+
+
+
+
+    
 
 
 
