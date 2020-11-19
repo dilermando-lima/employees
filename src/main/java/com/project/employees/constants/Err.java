@@ -20,5 +20,5 @@ public interface Err {
 
         /*  ================== 2 ERRORS ABOUT AUTH =========================*/
         final public static String ERR_2_1 = "There was a error on create your token. (2.1)";
-        final public static String ERR_2_2 = "Authorizarion header is not valid. Use /auth/key-access to get your key to use in Authorization header (2.2)";
+        final public static String ERR_2_2 = "Authorization header is not valid. Use /auth/key-access to get your key to use in Authorization header (2.2)";
 }
